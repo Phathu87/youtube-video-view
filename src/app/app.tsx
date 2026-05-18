@@ -6,6 +6,19 @@ import VideoMetadata from "./components/video-metadata";
 import VideoTags from "./components/video-tags";
 import VideosList from "./components/videos-list";
 import MiniPlayer from "./components/video/miniplayer";
+import api from "./shared/api/client";
+
+export const getVideos = () => api.get('/videos');
+export const uploadVideo = (data) => api.post('/videos/upload', data);
+
+export interface UploadVideoData {
+  title: string;
+  description: string;
+  file: File;
+  tags?: string[];
+  [key: string]: unknown;
+}
+
 
 export default function App() {
   return (
